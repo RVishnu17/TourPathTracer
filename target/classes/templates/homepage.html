@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>MapMapper</title>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil@0.10.3/src/leaflet.geometryutil.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* MAP as full background layer */
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Floating UI container (top-right overlay) */
+        .table-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+        }
+
+        /* Table styling like Google Maps panel */
+        table {
+            border-collapse: collapse;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border-bottom: 1px solid #eee;
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Clickable rows */
+        .clickable-row {
+            cursor: grab;
+            transition: background 0.2s ease;
+        }
+
+        .clickable-row:hover {
+            background-color: #f0f8ff;
+        }
+
+        .clickable-row:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Floating table UI -->
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th class>Order</th>
+            <th class>Location</th>
+
+        </tr>
+        </thead>
+        <tbody id = "tbody">
+        <!--        <tr class="clickable-row" data-href="https://google.com">-->
+<!--            <td>Item 1</td>-->
+<!--            <td>View Details</td>-->
+<!--        </tr>-->
+<!--        <tr class="clickable-row" data-href="https://bing.com">-->
+<!--            <td>Item 2</td>-->
+<!--            <td>View Details</td>-->
+<!--        </tr>-->
+        </tbody>
+    </table>
+</div>
+
+<!-- Map -->
+<div id="map"></div>
+
+<!-- Map script -->
+<script src="/js/map-app.js"></script>
+
+</body>
+</html>
